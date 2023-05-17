@@ -10,12 +10,12 @@ const commitment: Commitment = "confirmed";
 const connection = new Connection("https://api.devnet.solana.com", commitment);
 
 // Mint address
-const mint = new PublicKey("<mint address>");
+const mint = new PublicKey("Ezk2UvactiXWVwYMrdRYVs2qVhKwfeR2ugtzs74fdD8r");
 
 const token_decimals = 1_000_000n;
 
 // Recipient address
-const to = new PublicKey("<receiver address>");
+const to = new PublicKey("3RnANoZfrvaMZf8kekMXwbAB7syK7XbAZvmXQkZxQRUe");
 
 (async () => {
     try {
@@ -27,6 +27,7 @@ const to = new PublicKey("<receiver address>");
 
         // Transfer the new token to the "toTokenAccount" we just created
         const tx = await transfer(connection, keypair, fromWallet.address, toWallet.address, keypair, 1n * token_decimals);
+        console.log(`https://explorer.solana.com/tx/${tx}?cluster=devnet`)
     } catch(e) {
         console.error(`Oops, something went wrong: ${e}`)
     }
